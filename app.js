@@ -20,7 +20,7 @@ app.get('/users', (req,res) => {
 app.post('/users', (req, res) => {
     const addUser = req.body;
 
-    const userExists = users.find(users => users.email === addUser.email);
+    const userExists = users.find(user => user.email === addUser.email);
     if(userExists){
         return res.status(400).json({
             Message: "User already exist"
@@ -53,6 +53,8 @@ app.post('/users', (req, res) => {
     })
 })
 
-app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`)
-})
+// app.listen(PORT, () => {
+//     console.log(`Server running on port ${PORT}`)
+// })
+
+module.exports = app;
