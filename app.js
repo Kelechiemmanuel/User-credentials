@@ -9,16 +9,17 @@ const PORT = 4800;
 
 const users = [];
 
-// app.get('/', (req, res) => {
-//     res.send('Welcome');
-// })
+app.get('/', (req, res) => {
+    res.send('Welcome');
+})
 
-// app.get('/users', (req,res) => {
-//     res.json(users)
-// })
+app.get('/users', (req,res) => {
+    res.json(users)
+})
 
 app.post('/users', (req, res) => {
     const addUser = req.body;
+    console.log("BODY:", addUser);
 
     const userExists = users.find(user => user.email === addUser.email);
     if(userExists){
@@ -41,7 +42,7 @@ app.post('/users', (req, res) => {
 
         if (!addUser.password) {
         return res.status(400).json({
-            message: "Password required"
+            Message: "Password required"
         });
     }
 
