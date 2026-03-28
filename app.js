@@ -9,19 +9,20 @@ const PORT = 4800;
 
 const users = [];
 
-app.get('/', (req, res) => {
-    res.send('Welcome');
-})
+// app.get('/', (req, res) => {
+//     res.send('Welcome');
+// })
 
-app.get('/users', (req,res) => {
-    res.json(users)
-})
+// app.get('/users', (req,res) => {
+//     res.json(users)
+// })
 
 app.post('/users', (req, res) => {
     const addUser = req.body;
     console.log("BODY:", addUser);
 
     const userExists = users.find(user => user.email === addUser.email);
+    addUser.createdAt = new Date().toISOString();
     if(userExists){
         return res.status(400).json({
             Message: "User already exist"
